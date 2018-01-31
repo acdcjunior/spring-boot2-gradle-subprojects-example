@@ -1,0 +1,21 @@
+########################
+# IntelliJ IDEA
+########################
+# Vide: https://docs.gradle.org/current/userguide/idea_plugin.html#sec:idea_tasks
+.idea/
+# project information
+*.ipr
+# module information
+*.iml
+# the workspace XML
+*.iws
+
+########################
+# Gradle
+########################
+.gradle/
+build/
+
+# IntelliJ + Gradle
+# IntelliJ e Gradle 4.0 têm alguma treta nao resolvida relativa aa pasta out ==> https://youtrack.jetbrains.com/issue/IDEA-175172
+out/
