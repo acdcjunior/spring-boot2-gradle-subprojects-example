@@ -1,7 +1,7 @@
 buildscript {
     ext {
-//        springBootVersion = '1.5.10.RELEASE' // works
-        springBootVersion = '2.0.0.RC1' // doesn't work
+//        springBootVersion = '1.5.10.RELEASE'
+        springBootVersion = '2.0.0.RC1'
 
         h2Version = "1.4.196"
     }
@@ -27,11 +27,16 @@ subprojects {
     apply plugin: 'java'
     sourceCompatibility = JavaVersion.VERSION_1_8
 
+    // info about this: https://github.com/spring-projects/spring-boot/issues/11059
     apply plugin: "io.spring.dependency-management"
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+            // could have been
+            // mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+            // but, as per source, that constant is a string containing the exact value below, and I think the one below is clearer
+            // details: https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/gradle-plugin/reference/html/#managing-dependencies-using-in-isolation
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
         }
     }
 }
